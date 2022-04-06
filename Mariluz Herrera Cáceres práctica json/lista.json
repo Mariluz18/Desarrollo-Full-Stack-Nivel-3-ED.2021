@@ -1,0 +1,42 @@
+{
+	"supermercados": [{
+			"nombre": "Mercadona",
+			"direccion": "New York",
+			"geolocalizacion": {
+				"latitud": 40.712784,
+				"longitud": -74.005941
+			},
+			"productos": [{
+				"nombre": "Pan integral",
+				"oferta": false,
+				"producto_habitual": true,
+				"unidades": 1,
+				"precio": 0.50,
+				"adquirido": true
+			}]
+		},
+		{
+			"nombre": "Hiperdino",
+			"direccion": "Melenara",
+			"geolocalizacion": {
+				"latitud": 20.712784,
+				"longitud": -14.005941
+			},
+			"productos": [{
+				"nombre": "Doritos",
+				"oferta": true,
+				"producto_habitual": false,
+				"unidades": 0,
+				"precio": 1.20,
+				"adquirido": false
+			}, {
+				"nombre": "Regaliz",
+				"oferta": false,
+				"producto_habitual": false,
+				"unidades": 0,
+				"precio": 0.99,
+				"adquirido": false
+			}]
+		}
+	]
+}
