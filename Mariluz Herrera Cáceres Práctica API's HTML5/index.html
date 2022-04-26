@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctia API HTML5</title>
+
+    <style>
+      label {
+        background-color: #ffbf69;
+        padding: 8px;
+        border-radius: 15px;
+        color: white;
+        cursor: pointer;
+      }
+      label:hover {
+        background-color: #ff9f1c;
+        font-weight: bolder;
+      }
+      .controls {
+        visibility: hidden;
+      }
+      #output {
+        margin-top: 1rem;
+      }
+      body {
+        background-color: #fff;
+      }
+      .container {
+        text-align: center;
+        width: 90%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input
+        type="file"
+        id="video_upload"
+        name="miVideo"
+        accept="video/mp4"
+        onchange="handleFileSelect(event)"
+      />
+      <h1>Reproductor de video</h1>
+      <div>
+        <label for="video_upload">Subir un video</label>
+      </div>
+      <div id="output"></div>
+      <div class="controls">
+        <button onclick="document.getElementById('video').play();">
+          Reproducir
+        </button>
+        <button onclick="document.getElementById('video').pause();">
+          Pausa
+        </button>
+        <button
+          onclick="document.getElementById('video').volume +=
+        0.1;"
+        >
+          Subir Volumen
+        </button>
+        <button
+          onclick="document.getElementById('video').volume -=
+        0.1;"
+        >
+          Bajar Volumen
+        </button>
+      </div>
+    </div>
+
+    <script>
+      if (window.File && window.FileReader && window.FileList) {
+        console.log("Todas las APIs soportadas");
+      } else {
+        alert("La API de FILE no es soportada en este navegador.");
+      }
+      const input = document.getElementById("video_upload");
+      const output = document.getElementById("output");
+      const controls = document.querySelector(".controls");
+      input.style.opacity = 0;
+
+      function loadingMessage() {
+        alert("Esta operación puede demorarse unos minutos...");
+      }
+      function handleFileSelect(e) {
+        //   input.files === e.target.files
+        const curFile = input.files;
+        console.log(curFile);
+        loadingMessage();
+        output.insertAdjacentHTML(
+          "afterbegin",
+          `
+          <video width="60%" id="video">
+            <source src=${URL.createObjectURL(curFile[0])} />
+            Your browser does not support HTML5 video.
+            </video>
+            `
+        );
+        controls.style.visibility = "visible";
+      }
+    </script>
+  </body>
+</html>
